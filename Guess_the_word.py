@@ -18,9 +18,23 @@ def guesstheword():
         #checks for invalid input, If there's a better way to do this please let me know!
         if len(guess) != 1 or guess =='1' or guess =='2' or guess =='3' or guess =='4' or guess =='5' or guess =='6' or guess =='7' or guess =='8' or guess =='9' or guess =='0':
             print("Not Ok only one letter")
-            continue
+            continue #starts loop over
+        #checks if it is a repeat ing the corect list no repeats here.
+        if guess in correctguess:
+            print("Hey you already got that one right!:\n")
+            continue#starts loop over
+
         if guess in word:
             correctguess.add(guess)
             print("Correct guess! ")
+            # Not starting the loop over to continue to the checkfor
+        else:
+            print("Incorrect, try again: \n")
+            continue
+        #checkfor
+        if all(letter in correctguess for letter in word):
+            print(f"\n\nCograts you did it: word was: {word}")
+            icorrect = 1
+            break
 if __name__ == "__main__":
     guesstheword()
